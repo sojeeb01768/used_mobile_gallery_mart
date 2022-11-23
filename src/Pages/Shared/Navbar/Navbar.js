@@ -6,6 +6,8 @@ const Navbar = () => {
     const menuItems = <React.Fragment>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+
     </React.Fragment>
     return (
         <div className="navbar bg-gray-200 shadow-xl">
