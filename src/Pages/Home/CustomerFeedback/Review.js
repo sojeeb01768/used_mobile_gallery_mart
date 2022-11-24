@@ -4,7 +4,7 @@ const Review = ({ singleReview }) => {
 
     const { name, image, review } = singleReview;
     return (
-        <div className="card mx-5 bg-base-100">
+        <div className="card lg:w-7/12 lg:mx-auto mx-5 md:mx-10 border p-5 bg-base-100">
             <div className="card-body p-0">
                 <div className="avatar">
                     <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

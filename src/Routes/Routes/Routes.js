@@ -15,16 +15,20 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/blog',
-                element:<Blog></Blog>
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
-                path:'/products',
-                element:<Products></Products>
+                path: '/category/:id',
+                loader: ({params}) => {
+                    return fetch(`http://localhost:5000/category/${params.id}`)
+                },
+                element: <Products></Products>
+
             }
         ]
     }
