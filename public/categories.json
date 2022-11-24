@@ -1,71 +1,17 @@
 [
     {
-        "id":"01",
+        "id": "01",
         "categoryName": "Android Mobile",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Android_phone.jpg/1200px-Android_phone.jpg",
-        "product": [
-            {
-                "deviceName": "samsung S22",
-                "img": "https://www.lbtechreviews.com/wp-content/uploads/2021/01/SamsungGalaxyS21Ultra_WEB_TOP.jpg",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            },
-            {
-                "deviceName": "samsung A50",
-                "img": "https://play-lh.googleusercontent.com/2EzVYNzSfOlc3nF_Edj0tOluz7o2MQyNYgLvBZsrGGFmgkn_WQIc-xOOwjThPPxr8A",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            }
-        ]
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Android_phone.jpg/1200px-Android_phone.jpg"
     },
     {
-        "id":"02",
+        "id": "02",
         "categoryName": "IOS Mobile",
-        "image": "https://easyacc764337266.files.wordpress.com/2020/12/a74f1-01-5.png?w=700&h=509",
-        "product": [
-            {
-                "deviceName": "Iphone 12 pro max",
-                "img": "https://images.squarespace-cdn.com/content/v1/5264f7c9e4b0a3247c641860/1617494848899-ZN23QBO1G64AU97XAF7K/iphone-12-pro-max-sample-photos_18.jpg",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            },
-            {
-                "deviceName": "Iphone X",
-                "img": "https://images.unsplash.com/photo-1512012029568-5acf2f99223e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXBwbGUlMjBpcGhvbmUlMjB4fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            }
-        ]
+        "image": "https://easyacc764337266.files.wordpress.com/2020/12/a74f1-01-5.png?w=700&h=509"
     },
     {
-        "id":"03",
+        "id": "03",
         "categoryName": "Button Mobile",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Android_phone.jpg/1200px-Android_phone.jpg",
-        "product": [
-            {
-                "deviceName": "BlackBerry Porsche Design P9983",
-                "img": "https://fdn.gsmarena.com/imgroot/news/15/12/gold-blackberry-porsche-design/-728x/gsmarena_001.jpg",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            },
-            {
-                "deviceName": "Nokia N95",
-                "img": "https://www.gizmochina.com/wp-content/uploads/2017/02/nokia-n95.jpg",
-                "originalPrice": 135000,
-                "sellingPrice": 70000,
-                "usingPeriod": "Nine Month",
-                "location": "Mirpur,Dhaka"
-            }
-        ]
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Android_phone.jpg/1200px-Android_phone.jpg"
     }
 ]
