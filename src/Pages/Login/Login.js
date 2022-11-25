@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const { logIn } = useContext(AuthContext)
+    const [loginError, setLoginError] = useState('');
+
     const handleLogin = data => {
         console.log(data);
+        setLoginError('');
+        logIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => {
+                console.log(err.message)
+                setLoginError(err.message);
+            });
+
     }
 
     return (
@@ -38,8 +53,11 @@ const Login = () => {
                         {errors.password && <p className='text-red-500' role="alert">{errors.password?.message}</p>}
 
                     </div>
-                    {/* <p>{data}</p> */}
+
                     <input className='btn btn-primary w-full my-5' value='Login' type="submit" />
+                    <div className='text-red-600 text-center mb-2'>
+                        {loginError && <p>{loginError}</p>} 
+                    </div>
                 </form>
                 <p className='text-center'>New to UMG Mart? <Link to='/signup'><span className='text-primary font-semibold'>Create New Account</span></Link></p>
                 <div className="divider">OR</div>
