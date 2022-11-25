@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../../../../contexts/AuthProvider';
 
 const BookingModal = ({ productData, setProductData }) => {
-    // const {deviceName } = productData;
-    // console.log(productData);
+
+    const { user } = useContext(AuthContext);
 
     const handleBooking = (event) => {
         event.preventDefault();
         const form = event.target;
         const deviceName = productData?.deviceName;
+        const image = productData?.img;
         const price = productData?.sellingPrice;
         const buyerName = form.name.value;
         const buyerEmail = form.email.value;
@@ -15,17 +18,36 @@ const BookingModal = ({ productData, setProductData }) => {
         const meetLocation = form.meetLocation.value;
         const booking = {
             deviceName,
+            image,
             price,
             buyerName,
             buyerEmail,
             buyerPhone,
             meetLocation
         }
+        console.log(productData);
 
         //when we send data to server
         // then a success toast show modal will be empty
-        console.log(booking);
-        setProductData(null)
+        fetch('http://localhost:5000/bookings', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.acknowledged === true) {
+                    setProductData(null)
+                    toast.success('Booking Confirmed')
+                }
+
+
+
+            })
     }
 
     return (
@@ -42,9 +64,9 @@ const BookingModal = ({ productData, setProductData }) => {
                         <p className='ml-5'><small>Price</small></p>
                         <input type="text" placeholder="" disabled value={productData?.sellingPrice} className="input input-bordered input-info w-full mt-2" />
                         <p className='ml-5'><small>Buyer Name</small></p>
-                        <input name='name' type="text" placeholder="" className="input input-bordered input-info w-full mt-2" />
+                        <input name='name' type="text" defaultValue={user?.displayName} disabled className="input input-bordered input-info w-full mt-2" />
                         <p className='ml-5'><small>Buyer Email</small></p>
-                        <input name='email' type="email" placeholder="" className="input input-bordered input-info w-full mt-2" />
+                        <input name='email' type="email" defaultValue={user?.email} disabled className="input input-bordered input-info w-full mt-2" />
                         <input name='phone' type="text" placeholder="Phone" className="input input-bordered input-info w-full mt-2" />
                         <input name='meetLocation' type="text" placeholder="Meeting Location" className="input input-bordered input-info w-full mt-2" />
                         <br />

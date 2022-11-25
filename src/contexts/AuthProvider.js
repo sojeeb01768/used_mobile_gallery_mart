@@ -25,13 +25,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUSer = (userInfo) => {
-        return updateProfile(user, userInfo)
+        return updateProfile(auth.currentUser, userInfo)
     }
 
     // on auth state changed
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('user observing');
+            // console.log('user observing');
             setUser(currentUser);
             setLoading(false);
         });
