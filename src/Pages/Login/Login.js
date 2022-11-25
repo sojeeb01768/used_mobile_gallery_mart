@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
@@ -9,6 +9,12 @@ const Login = () => {
     const { logIn } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('');
 
+    // for find the location of route to navigate
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location?.state?.from?.pathname || '/';
+
     const handleLogin = data => {
         console.log(data);
         setLoginError('');
@@ -16,6 +22,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.log(err.message)
@@ -56,7 +63,7 @@ const Login = () => {
 
                     <input className='btn btn-primary w-full my-5' value='Login' type="submit" />
                     <div className='text-red-600 text-center mb-2'>
-                        {loginError && <p>{loginError}</p>} 
+                        {loginError && <p>{loginError}</p>}
                     </div>
                 </form>
                 <p className='text-center'>New to UMG Mart? <Link to='/signup'><span className='text-primary font-semibold'>Create New Account</span></Link></p>

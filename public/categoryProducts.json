@@ -7,17 +7,19 @@
         "sellingPrice": 70000,
         "usingPeriod": "Nine Months",
         "location": "Mirpur, Dhaka",
-        "deviceCondition": "Super"
+        "deviceCondition": "Super",
+        "sellerName":"Rohim"
     },
     {
         "id": "01",
         "deviceName": "samsung A50",
-        "img": "https://play-lh.googleusercontent.com/2EzVYNzSfOlc3nF_Edj0tOluz7o2MQyNYgLvBZsrGGFmgkn_WQIc-xOOwjThPPxr8A",
+        "img": "https://www.mobiledokan.com/wp-content/uploads/2022/08/Samsung-Galaxy-Z-Flip4.jpg",
         "originalPrice": 35000,
         "sellingPrice": 17000,
         "usingPeriod": "One year",
         "location": "Syamoli, Dhaka",
-        "deviceCondition": "Very Good"
+        "deviceCondition": "Very Good",
+        "sellerName":"Korim"
     },
     {
         "id": "02",
@@ -27,7 +29,8 @@
         "sellingPrice": 78000,
         "usingPeriod": "Eight Month",
         "location": "Moghbazar, Dhaka",
-        "deviceCondition": "Super"
+        "deviceCondition": "Super",
+        "sellerName":"Salam"
     },
     {
         "id": "02",
@@ -37,7 +40,8 @@
         "sellingPrice": 30000,
         "usingPeriod": "One year 4 Month",
         "location": "Malibag, Dhaka",
-        "deviceCondition": "Very Good"
+        "deviceCondition": "Very Good",
+        "sellerName":"Borkot"
     },
     {
         "id": "03",
@@ -47,7 +51,8 @@
         "sellingPrice": 55000,
         "usingPeriod": "One years 8 Month",
         "location": "Gazipur, Dhaka",
-        "deviceCondition": "Good"
+        "deviceCondition": "Good",
+        "sellerName":"Jobbar"
     },
     {
         "id": "03",
@@ -57,6 +62,7 @@
         "sellingPrice": 7000,
         "usingPeriod": "Two years",
         "location": "Rajshahi",
-        "deviceCondition": "Medium"
+        "deviceCondition": "Medium",
+        "sellerName":"Sojeeb"
     }
 ]

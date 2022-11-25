@@ -24,6 +24,7 @@ const Products = () => {
                                 <p>Using period: {product.usingPeriod} </p>
                                 <p>Location: {product.location} </p>
                                 <p>Condition: {product.deviceCondition} </p>
+                                <p>Seller Name: {product.sellerName} </p>
 
                                 <div className="card-actions justify-center">
                                     <label
