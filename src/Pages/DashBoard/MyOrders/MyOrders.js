@@ -4,6 +4,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
+    console.log(user);
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
@@ -19,14 +20,17 @@ const MyOrders = () => {
     return (
         <div>
             <h2 className="text-3xl text-center my-5">My Orders</h2>
+            <p className='text-center'>User Name: <span className='font-semibold '>{user?.displayName}</span></p>
+            <p className='text-center'>Email: <span className='font-semibold '>{user?.email}</span></p>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>index</th>
                             <th>Image</th>
                             <th>Title</th>
+                            <th>Name</th>
                             <th>Price</th>
                             <th>Pay</th>
                         </tr>
@@ -50,6 +54,10 @@ const MyOrders = () => {
                                 <td>
                                     {booking.deviceName}
                                 </td>
+                                <td>
+                                    {booking.buyerName}
+                                </td>
+                                
                                 <td>{booking.price}</td>
                                 <th>
                                     <button className="btn btn-primary btn-md">PAY</button>
