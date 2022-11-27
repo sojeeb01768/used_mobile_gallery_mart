@@ -39,6 +39,7 @@ const SignUp = () => {
             });
     }
 
+    // Post user data to database
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType }
         fetch('http://localhost:5000/users', {
@@ -50,8 +51,19 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('save user', data)
-                navigate('/');
+                getUserToken(email);
+            })
+    }
+
+    // get user token from jwt
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessTokwn', data.accessToken);
+                    navigate('/');
+                }
             })
     }
 

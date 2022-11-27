@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import { GoogleAuthProvider } from "firebase/auth";
+
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const { logIn } = useContext(AuthContext)
+    const { logIn, popUpLogin } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('');
 
     // for find the location of route to navigate
@@ -29,6 +31,18 @@ const Login = () => {
                 setLoginError(err.message);
             });
 
+    }
+
+    // google popup login
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        popUpLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -68,7 +82,7 @@ const Login = () => {
                 </form>
                 <p className='text-center'>New to UMG Mart? <Link to='/signup'><span className='text-primary font-semibold'>Create New Account</span></Link></p>
                 <div className="divider">OR</div>
-                <button className='btn w-full btn-outline btn-primary'>Continue With Google</button>
+                <button onClick={handleGoogleSignIn} className='btn w-full btn-outline btn-primary'>Continue With Google</button>
             </div>
         </div>
     );
