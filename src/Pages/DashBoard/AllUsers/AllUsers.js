@@ -6,11 +6,13 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('http://localhost:5000/users?userType=buyer');
+            
             const data = await res.json();
             return data;
         }
     })
+
     // console.log(users);
     const handleMakeAdmin = (id) => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
@@ -30,7 +32,7 @@ const AllUsers = () => {
     }
     return (
         <div>
-            <h2>All users</h2>
+            <h2 className='text-center text-4xl my-10 font-bold'>All Buyers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* <!-- head --> */}
@@ -39,7 +41,7 @@ const AllUsers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Admin</th>
+                            <th>Buyer</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -52,7 +54,7 @@ const AllUsers = () => {
                                 <th>{i + 1}</th>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
-                                <td>{ user?.userType!=='admin' &&  <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-primary btn-xs text-white'>Make Admin</button>}</td>
+                                <td>{ user?.userType!=='admin' &&  <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-primary btn-xs text-white'>Buyer</button>}</td>
                                 <td><button className='btn btn-error btn-xs text-white'>Delete</button> </td>
                             </tr>)
                         }
