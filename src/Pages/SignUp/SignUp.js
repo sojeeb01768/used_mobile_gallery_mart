@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
 
@@ -10,19 +11,26 @@ const SignUp = () => {
 
     const { createUser, updateUSer } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('')
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
     const navigate = useNavigate();
 
+    if (token) {
+        navigate('/')
+    }
+
     const handleSignUp = data => {
-        // console.log(data);
+        console.log(data);
         setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast("User Created Successfully")
+                toast("User Created Successfully");
+
                 const userInfo = {
-                    displayName: data.name,
-                    userType: data.userType
+                    displayName: data.name
 
                 }
                 updateUSer(userInfo)
@@ -30,14 +38,27 @@ const SignUp = () => {
                         saveUser(data.name, data.email, data.userType);
                     })
                     .catch(err => console.log(err))
-
-
             })
             .catch(err => {
                 console.log(err)
                 setSignUpError(err.message)
             });
     }
+
+    //      //userUpdateProfile
+    //      updateUserProfile(data.name, data.photoURL)
+    //      .then(() => {
+    //          saveUSer(data.name, data.email, data.role);
+    //      })
+    //      .catch(err => console.error(err))
+    // })
+    // .catch(err => {
+    //  console.error(err)
+    //  setSignUpError(err.message)
+    // })
+    // }
+
+
 
     // Post user data to database
     const saveUser = (name, email, userType) => {
@@ -51,21 +72,22 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                getUserToken(email);
+                // setCreatedUserEmail(email);
+                setCreatedUserEmail(email);
             })
     }
 
-    // get user token from jwt
-    const getUserToken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('accessTokwn', data.accessToken);
-                    navigate('/');
-                }
-            })
-    }
+    // // get user token from jwt
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken', data.accessToken);
+    //                 navigate('/');
+    //             }
+    //         })
+    // }
 
     return (
         <div className='h-[700px] flex justify-center items-center '>
