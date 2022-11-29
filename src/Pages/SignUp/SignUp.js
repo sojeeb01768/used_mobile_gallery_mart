@@ -44,22 +44,6 @@ const SignUp = () => {
                 setSignUpError(err.message)
             });
     }
-
-    //      //userUpdateProfile
-    //      updateUserProfile(data.name, data.photoURL)
-    //      .then(() => {
-    //          saveUSer(data.name, data.email, data.role);
-    //      })
-    //      .catch(err => console.error(err))
-    // })
-    // .catch(err => {
-    //  console.error(err)
-    //  setSignUpError(err.message)
-    // })
-    // }
-
-
-
     // Post user data to database
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType }
@@ -76,18 +60,6 @@ const SignUp = () => {
                 setCreatedUserEmail(email);
             })
     }
-
-    // // get user token from jwt
-    // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.accessToken) {
-    //                 localStorage.setItem('accessToken', data.accessToken);
-    //                 navigate('/');
-    //             }
-    //         })
-    // }
 
     return (
         <div className='h-[700px] flex justify-center items-center '>
