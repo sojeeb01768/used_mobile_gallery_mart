@@ -8,7 +8,7 @@ const MyOrders = () => {
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [] } = useQuery({
+    const { data: bookings = [], isLoading} = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -20,6 +20,10 @@ const MyOrders = () => {
             return data;
         }
     })
+
+    if(isLoading){
+        return <p>Loading...</p>
+    }
 
     return (
         <div>
@@ -42,7 +46,8 @@ const MyOrders = () => {
                     <tbody>
                         {/* <!-- row 1 --> */}
                         {
-                            bookings.map((booking, i) => <tr
+                            bookings &&
+                            bookings?.map((booking, i) => <tr
                                 key={booking._id}
                             >
                                 <th>{i + 1}</th>

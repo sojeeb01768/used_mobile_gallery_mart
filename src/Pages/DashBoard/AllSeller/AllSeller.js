@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 
 const AllSeller = () => {
 
@@ -13,6 +14,28 @@ const AllSeller = () => {
             return data;
         }
     })
+
+    // deleting function
+    const [deletingUser, setDeletingUser] = useState(null);
+    const closeModal = () => {
+        setDeletingUser(null);
+    }
+
+    const handleDeleteUser = (user) => {
+        fetch(`http://localhost:5000/users/${user._id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    console.log(data);
+                    refetch();
+                    toast.success(`${user.name}Deleted Successful`)
+                }
+            })
+    }
+
+
 
     const handleMakeAdmin = (id) => {
         fetch(`http://localhost:5000/users/admin/${id}`, {
@@ -33,9 +56,9 @@ const AllSeller = () => {
 
     return (
         <div>
-            <h2>All Seller</h2>
+
             <div>
-                <h2 className='text-center text-4xl my-10 font-bold'>All Buyers</h2>
+                <h2 className='text-center text-4xl my-10 font-bold'>All Seller</h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         {/* <!-- head --> */}
@@ -44,7 +67,7 @@ const AllSeller = () => {
                                 <th></th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Buyer</th>
+                                <th>User Type</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -57,8 +80,12 @@ const AllSeller = () => {
                                     <th>{i + 1}</th>
                                     <td>{user?.name}</td>
                                     <td>{user?.email}</td>
-                                    <td>{user?.userType !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-primary btn-xs text-white'>Buyer</button>}</td>
-                                    <td><button className='btn btn-error btn-xs text-white'>Delete</button> </td>
+                                    <td>{user?.userType}</td>
+                                    {/* <td>{user?.userType !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-primary btn-xs text-white'>Seller</button>}</td> */}
+                                    <td>
+
+                                        <label onClick={() => setDeletingUser(user)} htmlFor="confirmation-modal" className="btn btn-error  text-white">Delete</label>
+                                    </td>
                                 </tr>)
                             }
 
@@ -66,6 +93,18 @@ const AllSeller = () => {
                         </tbody>
                     </table>
                 </div>
+                {
+                    deletingUser && <ConfirmationModal
+                        title={`Are you sure`}
+                        message={`Parmanently Delete ${deletingUser.name}?`}
+                        closeModal={closeModal}
+                        successAction={handleDeleteUser}
+                        modalData={deletingUser}
+                        successButtonName="Delete"
+                    >
+
+                    </ConfirmationModal>
+                }
             </div>
         </div>
     );

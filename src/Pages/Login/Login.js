@@ -9,6 +9,9 @@ import useToken from '../../hooks/useToken';
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    // const [createdUserEmail, setCreatedUserEmail] = useState('')
+
+
     const { logIn, popUpLogin } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
@@ -49,8 +52,28 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                const buyer = 'buyer'                  
+                
+                saveUser(user.displayName, user.email, buyer)
             })
             .catch(error => console.error(error))
+    }
+
+    // Post user data to database
+    const saveUser = (name, email, userType) => {
+        const user = { name, email, userType }
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                setLoginUserEmail(email);
+            })
     }
 
     return (
