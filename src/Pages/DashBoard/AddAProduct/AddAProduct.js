@@ -1,12 +1,57 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const AddAProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+
 
 
     const handleAddProduct = (data) => {
-        console.log(data);
+        // console.log(data);
+        console.log(data.image[0]);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData);
+                if (imgData.success) {
+                    console.log(imgData.data.url);
+                    const product = {
+                        deviceName: data.deviceName,
+                        id: data.id,
+                        img: imgData.data.url,
+                        location: data.location,
+                        sellerName: data.sellerName,
+                        sellerPhone: data.sellerPhone,
+                        sellingPrice: data.sellingPrice,
+                        usingPeriod: data.usingPeriod,
+                        deviceCondition: data.deviceCondition
+
+                    }
+                    // save product info to database 
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result);
+                            toast.success('Product Added Successfully')
+                        })
+                }
+            })
     }
     return (
         <div className='w-96 p-5 border mx-auto mt-10'>
@@ -73,16 +118,6 @@ const AddAProduct = () => {
                     {errors.usingPeriod && <p className='text-red-500' role="alert">{errors.usingPeriod?.message}</p>}
 
                 </div>
-                {/* <div className="form-control w-full ">
-                    <label className="label">
-                        <span className="label-text">Email</span>
-                    </label>
-                    <input type="email"
-                        {...register("email", { required: "Email is required" })}
-                        className="input input-bordered w-full " />
-                    {errors.email && <p className='text-red-500' role="alert">{errors.email?.message}</p>}
-
-                </div> */}
                 <div className='mt-5 grid gap-2  '>
                     <p>Product Condition</p>
                     <select className=' p-3 bg-zinc-200 rounded ' {...register("deviceCondition")}>
@@ -91,12 +126,20 @@ const AddAProduct = () => {
                         <option value="fair">Fair</option>
                     </select>
                 </div>
+                <div className='mt-5 grid gap-2  '>
+                    <p>Product Category</p>
+                    <select className=' p-3 bg-zinc-200 rounded ' {...register("id")}>
+                        <option value="01">Android</option>
+                        <option value="02">IOS</option>
+                        <option value="03">Button</option>
+                    </select>
+                </div>
                 <div className="form-control w-full ">
                     <label className="label">
                         <span className="label-text">Photo</span>
                     </label>
                     <input type="file"
-                        {...register("img", { required: "Photo is required" })}
+                        {...register("image", { required: "Photo is required" })}
                         className="input input-bordered w-full " />
                     {errors.img && <p className='text-red-500' role="alert">{errors.img?.message}</p>}
 
