@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+<p>Name: SojeeB Islam</p>
+<p>Email: sojeebahmed.sa@gmail.com</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p>Admin Email: abdul@kader.com </p>
+<p>Admin Password: aaaaaa </p>
 
-## Available Scripts
+<h5>GITHUB SERVER REPO LINK:
+ https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-sojeeb01768
+</h5>
 
-In the project directory, you can run:
+<h5>GITHUB CLIENT REPO LINK: 
+https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-sojeeb01768
+</h5>
 
-### `npm start`
+<h5>FireBase Live LINK: 
+https://umg-mart.web.app/
+</h5>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<p>What actually I used to make this project: <br>
+=> React framework/library. <br>
+=> React tailwind library for css <br>
+=> Used Github to save code. <br>
+=> express js for create server <br>
+=> Deploy this site on firebase. <br>
+=> I also used mongodb Database to store data <br>
+=> Used firebase authentication and JWT token for login register etc. <br>
+</p>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<p>What Is the feature of this Project: <br>
+This is actually used mobile selling site. Here you can buy used mobile phone of many brands. <br>
+=> Firstly  sets some data of some topics this site (we use loader and also react query to load data from server) <br>
+=> I also create a separate server from the help of mongodb<br>
+=> You can see phone details and also booked your favourite product and buy this . <br>
+=> There are also seller,buyer and admin panel <br>
+=> seller can add his product to website from dashboard and also can delete his product<br>
+=> buyer can see the selected product on my order in dashboard and can pay for his product<br>
+=> admin can remove seller and buyer from server <br>
+ </p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

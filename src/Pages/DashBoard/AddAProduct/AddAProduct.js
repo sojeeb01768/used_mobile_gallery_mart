@@ -37,7 +37,7 @@ const AddAProduct = () => {
 
                     }
                     // save product info to database 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://used-mobile-gallery-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

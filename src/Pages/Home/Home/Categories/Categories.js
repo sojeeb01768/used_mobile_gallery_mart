@@ -6,7 +6,7 @@ const Categories = () => {
     // alternative of useEffect for loading data from server
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
-        queryFn: async () => fetch('http://localhost:5000/categories')
+        queryFn: async () => fetch('https://used-mobile-gallery-server.vercel.app/categories')
             .then(res => res.json())
     })
 

@@ -7,7 +7,7 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?userType=buyer');
+            const res = await fetch('https://used-mobile-gallery-server.vercel.app/users?userType=buyer');
 
             const data = await res.json();
             return data;
@@ -20,7 +20,7 @@ const AllUsers = () => {
     }
 
     const handleDeleteUser = (user) => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://used-mobile-gallery-server.vercel.app/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const AllUsers = () => {
 
     // console.log(users);
     const handleMakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://used-mobile-gallery-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

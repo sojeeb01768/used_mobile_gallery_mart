@@ -47,7 +47,7 @@ const SignUp = () => {
     // Post user data to database
     const saveUser = (name, email, userType) => {
         const user = { name, email, userType }
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-mobile-gallery-server.vercel.app/users', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

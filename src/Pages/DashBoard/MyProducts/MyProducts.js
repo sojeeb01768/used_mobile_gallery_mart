@@ -8,7 +8,7 @@ const MyProducts = () => {
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+            const res = await fetch('https://used-mobile-gallery-server.vercel.app/products');
             const data = await res.json();
             return data;
         }
@@ -21,17 +21,17 @@ const MyProducts = () => {
     }
 
     const handleDeleteProduct = (product) => {
-        fetch(`http://localhost:5000/products/${product._id}`,{
-            method:'DELETE'
+        fetch(`https://used-mobile-gallery-server.vercel.app/products/${product._id}`, {
+            method: 'DELETE'
         })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.deletedCount>0){
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
 
-                refetch();
-                toast.success(`${product.deviceName}Deleted Successful`)
-            }
-        })
+                    refetch();
+                    toast.success(`${product.deviceName}Deleted Successful`)
+                }
+            })
     }
 
     return (

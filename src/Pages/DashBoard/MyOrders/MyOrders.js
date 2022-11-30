@@ -7,7 +7,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     // console.log(user);
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url = `https://used-mobile-gallery-server.vercel.app/bookings?email=${user?.email}`;
 
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -56,36 +56,33 @@ const MyOrders = () => {
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-circle w-14 h-14">
-                                                <img src={booking.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={booking?.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    {booking.deviceName}
+                                    {booking?.deviceName}
                                 </td>
                                 <td>
-                                    {booking.buyerName}
+                                    {booking?.buyerName}
                                 </td>
                                 <td>
-                                    {booking.price}
+                                    {booking?.price}
                                 </td>
 
                                 <td>
                                     {
-                                        booking.price && !booking.paid && <Link
+                                        booking?.price && !booking?.paid && <Link
                                             to={`/dashboard/payment/${booking._id}`}
                                         ><button
                                             className='btn btn-primary btn-md'
                                         >Pay</button></Link>
                                     }
                                     {
-                                        booking.price && booking.paid && <span className='text-green-500'>PAID</span>
+                                        booking?.price && booking?.paid && <span className='text-green-500'>PAID</span>
                                     }
                                 </td>
-                                {/* <th>
-                                    <button className="btn btn-primary btn-md">PAY</button>
-                                </th> */}
                             </tr>)
                         }
                     </tbody>
