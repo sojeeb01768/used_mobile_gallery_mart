@@ -1,8 +1,7 @@
 <p>Name: SojeeB Islam</p>
 <p>Email: sojeebahmed.sa@gmail.com</p>
 
-<p>Admin Email: abdul@kader.com </p>
-<p>Admin Password: aaaaaa </p>
+
 
 <h5>GITHUB SERVER REPO LINK:
  https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-sojeeb01768
@@ -38,5 +37,11 @@ This is actually used mobile selling site. Here you can buy used mobile phone of
 => seller can add his product to website from dashboard and also can delete his product<br>
 => buyer can see the selected product on my order in dashboard and can pay for his product<br>
 => admin can remove seller and buyer from server <br>
- </p>
+ </p> <br>
+
+ <p>Admin Email: <abdul@kader.com></p>
+<p>Admin Password: <aaaaaa> </p>
+
+
+
 
