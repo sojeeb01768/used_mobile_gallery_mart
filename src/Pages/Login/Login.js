@@ -35,6 +35,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(data.email);
+                navigate('/')
 
             })
             .catch(err => {
@@ -52,9 +53,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                const buyer = 'buyer'                  
-                
+                const buyer = 'buyer'
                 saveUser(user.displayName, user.email, buyer)
+                navigate('/')
             })
             .catch(error => console.error(error))
     }

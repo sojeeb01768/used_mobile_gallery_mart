@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyOrders = () => {
@@ -8,7 +9,7 @@ const MyOrders = () => {
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [], isLoading} = useQuery({
+    const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -21,7 +22,7 @@ const MyOrders = () => {
         }
     })
 
-    if(isLoading){
+    if (isLoading) {
         return <p>Loading...</p>
     }
 
@@ -40,7 +41,7 @@ const MyOrders = () => {
                             <th>Title</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>Pay</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,11 +67,25 @@ const MyOrders = () => {
                                 <td>
                                     {booking.buyerName}
                                 </td>
+                                <td>
+                                    {booking.price}
+                                </td>
 
-                                <td>{booking.price}</td>
-                                <th>
+                                <td>
+                                    {
+                                        booking.price && !booking.paid && <Link
+                                            to={`/dashboard/payment/${booking._id}`}
+                                        ><button
+                                            className='btn btn-primary btn-md'
+                                        >Pay</button></Link>
+                                    }
+                                    {
+                                        booking.price && booking.paid && <span className='text-green-500'>PAID</span>
+                                    }
+                                </td>
+                                {/* <th>
                                     <button className="btn btn-primary btn-md">PAY</button>
-                                </th>
+                                </th> */}
                             </tr>)
                         }
                     </tbody>
