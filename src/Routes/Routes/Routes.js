@@ -43,7 +43,7 @@ const router = createBrowserRouter([
                 loader: ({ params }) => {
                     return fetch(`https://used-mobile-gallery-server.vercel.app/category/${params.id}`)
                 },
-                element: <Products></Products>
+                element: <PrivateRoute><Products></Products></PrivateRoute>
 
             },
 
