@@ -39,8 +39,8 @@ This is actually used mobile selling site. Here you can buy used mobile phone of
 => admin can remove seller and buyer from server <br>
  </p> <br>
 
- Admin Email: <abdul@kader.com>
-Admin Password: <aaaaaa>
+ Admin Email: <abdul@kader.com> <br>
+Admin Password: aaaaaa
 
 
 
