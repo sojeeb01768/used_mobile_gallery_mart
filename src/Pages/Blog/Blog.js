@@ -2,9 +2,13 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='m-5'>
+        <div
+
+            className='m-5'>
             <h1 className='text-6xl font-bold text-primary text-center my-10'>Blog</h1>
-            <div className='my-10'>
+            <div data-aos="fade-up"
+                data-aos-duration="2000"
+                className='my-10'>
                 <h4 className='text-2xl font-semibold'>Q: What are the different ways to manage a state in a React application?</h4>
                 <p>Managing state in your React apps isn’t as simple as using useState or useReducer.
                     Not only are there are a lot of different kinds of state, but there often dozens of ways of managing each kind. Which should you choose?
@@ -34,7 +38,10 @@ const Blog = () => {
                     There are undoubtedly more pieces of state that we could identify, but these are the major categories worth focusing on for most applications you build.
                 </p>
             </div>
-            <div className='my-10'>
+            <div
+                data-aos="fade-down"
+                data-aos-duration="2000"
+                className='my-10'>
                 <h4 className='text-2xl font-semibold'>Q: How does prototypical inheritance work?
 
                 </h4>
@@ -45,7 +52,10 @@ const Blog = () => {
                     All the JavaScript objects inherit properties and methods from a prototype (like Date objects inherit properties from Date.prototype and so on).
                 </p>
             </div>
-            <div className='my-10'>
+            <div
+                data-aos="fade-down"
+                data-aos-duration="2000"
+                className='my-10'>
                 <h4 className='text-2xl font-semibold'>Q: What is a unit test? Why should we write unit tests?
 
                 </h4>
@@ -62,7 +72,10 @@ const Blog = () => {
                     * Developers can also re-use code, migrating it to new projects. <br />
                 </p>
             </div>
-            <div className='my-10'>
+            <div
+                data-aos="fade-down"
+                data-aos-duration="2000"
+                className='my-10'>
                 <h4 className='text-2xl font-semibold'>Q: React vs. Angular vs. Vue?
 
                 </h4>
